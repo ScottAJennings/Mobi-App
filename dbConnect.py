@@ -1,11 +1,11 @@
 import mysql.connector
 from mysql.connector import Error
 
-# Define MySQL connection details
-HOST = "localhost"  # or "127.0.0.1"
-USER = "scott"  # Change if using a different user
-PASSWORD = "scott"  # Set your actual MySQL root password
-DATABASE = "Mobi_Exercise_db"  # Change to your database name
+# MySQL connection details
+HOST = "localhost"  
+USER = "scott"  
+PASSWORD = "scott"  
+DATABASE = "Mobi_Exercise_db"  
 
 try:
     # Connect to MySQL server
@@ -27,6 +27,7 @@ try:
         cursor.execute("SHOW DATABASES;")
         databases = cursor.fetchall()
         
+        # Print something to terminal
         print("\nDatabases on this MySQL server:")
         for db in databases:
             print(f"- {db[0]}")
