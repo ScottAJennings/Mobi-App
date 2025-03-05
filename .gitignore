@@ -3,6 +3,7 @@
 #    Nothing yet
 
 ## App ##
+# Self added
 mobi_app_app/android
 mobi_app_app/build
 mobi_app_app/ios
@@ -14,6 +15,7 @@ mobi_app_app/windows
 mobi_app_app/.metadata
 mobi_app_app/pubspec.lock
 
+# Default
 # Miscellaneous
 mobi_app_app/*.class
 mobi_app_app/*.log
