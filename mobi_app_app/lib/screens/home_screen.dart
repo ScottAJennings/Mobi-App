@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -6,7 +8,35 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  List<String> exercises = ["Push-ups", "Squats", "Lunges", "Plank"];
+  List<String> exercises = [];
+  bool isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    fetchExercises(); // Fetch data when screen loads
+  }
+
+  // Fetch exercises from Flask API
+  Future<void> fetchExercises() async {
+    final response =
+        await http.get(Uri.parse("http://10.0.2.2:5000/exercises"));
+
+    if (response.statusCode == 200) {
+      List<dynamic> data = json.decode(response.body);
+
+      setState(() {
+        exercises =
+            data.map((exercise) => exercise["name"].toString()).toList();
+        isLoading = false;
+      });
+    } else {
+      setState(() {
+        isLoading = false;
+      });
+      throw Exception("Failed to load exercises");
+    }
+  }
 
   void addExercise() {
     setState(() {
@@ -21,17 +51,21 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Column(
         children: [
           Expanded(
-            child: ListView.builder(
-              itemCount: exercises.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(exercises[index]),
-                  onTap: () {
-                    Navigator.pushNamed(context, '/exercise-description');
-                  },
-                );
-              },
-            ),
+            child: isLoading
+                ? Center(
+                    child:
+                        CircularProgressIndicator()) // Show loading indicator
+                : ListView.builder(
+                    itemCount: exercises.length,
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        title: Text(exercises[index]),
+                        onTap: () {
+                          Navigator.pushNamed(context, '/exercise-description');
+                        },
+                      );
+                    },
+                  ),
           ),
           ElevatedButton(
             onPressed: () {
