@@ -1,7 +1,9 @@
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 import mysql.connector
 
 app = Flask(__name__)
+CORS(app)  # Allow all origins to access API
 
 # MySQL connection
 def get_db_connection():
@@ -22,15 +24,6 @@ def get_exercises():
     conn.close()
     return jsonify(exercises)
 
-# Get a single exercise by ID
-@app.route("/exercise/<exercise_id>", methods=["GET"])
-def get_exercise_by_id(exercise_id):
-    conn = get_db_connection()
-    cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT * FROM Exercise WHERE exercise_id = %s;", (exercise_id,))
-    exercise = cursor.fetchone()
-    conn.close()
-    return jsonify(exercise)
-
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
+

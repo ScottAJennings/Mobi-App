@@ -1,1 +1,63 @@
-# Do not know what to ignore just yet
+## Database ##
+
+#    Nothing yet
+
+## App ##
+mobi_app_app/android
+mobi_app_app/build
+mobi_app_app/ios
+mobi_app_app/linux
+mobi_app_app/macos
+mobi_app_app/web
+mobi_app_app/windows
+
+mobi_app_app/.metadata
+mobi_app_app/pubspec.lock
+
+# Miscellaneous
+mobi_app_app/*.class
+mobi_app_app/*.log
+mobi_app_app/*.pyc
+mobi_app_app/*.swp
+mobi_app_app/.DS_Store
+mobi_app_app/.atom/
+mobi_app_app/.buildlog/
+mobi_app_app/.history
+mobi_app_app/.svn/
+mobi_app_app/migrate_working_dir/
+
+# IntelliJ related
+mobi_app_app/*.iml
+mobi_app_app/*.ipr
+mobi_app_app/*.iws
+mobi_app_app/.idea/
+
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+#.vscode/
+
+# Flutter/Dart/Pub related
+mobi_app_app/**/doc/api/
+mobi_app_app/**/ios/Flutter/.last_build_id
+mobi_app_app/.dart_tool/
+mobi_app_app/.flutter-plugins
+mobi_app_app/.flutter-plugins-dependencies
+mobi_app_app/.pub-cache/
+mobi_app_app/.pub/
+mobi_app_app/build/
+
+# Symbolication related
+mobi_app_app/app.*.symbols
+
+# Obfuscation related
+mobi_app_app/app.*.map.json
+
+# Android Studio will place build artifacts here
+mobi_app_app/android/app/debug
+mobi_app_app/android/app/profile
+mobi_app_app/android/app/release
+
+
+
+
